@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Promotions} from "./Promotions";
 
-export class Home extends Component{
+class Home extends Component{
     render(){
         return(
             <div className="container">
@@ -15,3 +15,5 @@ export class Home extends Component{
         );
     }
 }
+
+export default Home;
