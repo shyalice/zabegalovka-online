@@ -1,35 +1,57 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
-import {AddProductToCart} from "../../redux/actions";
+import {AddProductToCart,
+        ChangeIncrementCountOfProduct,
+        ChangeSizeOfPizza} from "../../redux/actions";
 
 class Pizza extends Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            sizeOfPizza: [25, 30, 35],
+        };
         this.AddProductToCart = this.AddProductToCart.bind(this);
     }
 
     AddProductToCart = (product) =>{
-        const productWitchId = {...product, id: "product_"+Math.random().toString(36).substr(2, 9)}
-        this.props.AddProductToCart(productWitchId);
+        let count = 0;
+        for(let productInCart of this.props.cart){
+            if(productInCart.name === product.name && productInCart.size === product.size){
+                count += 1;
+            }
+        };
+        if(count > 0){
+            this.props.ChangeIncrementCountOfProduct(product);
+        }
+        else{
+            this.props.AddProductToCart(product);
+        }
     }
-    
+
     render(){
         return(
-            <div>
+            <div className="container">
                 <h2>Pizzza!!!</h2>
                 {this.props.pizza.map((pizza)=>{
                     return(
-                        <div key={pizza.name} style={{border: "2px solid red"}}>
-                            <h3>{pizza.name}</h3>
+                        <div className="product-item" key={"pizza "+pizza.name}>
+                            <h3 className="product-item-name">{pizza.name}</h3>
                             <div>
-                                <h4>ingredients:</h4>
+                                <h4 className="ingredients">ingredients:</h4>
                                 {pizza.ingredient.map((ingredient) =>{
                                     return(
-                                            <div key={'ingredient' + ingredient}>{ingredient}</div>
+                                        <div className="ingredient-item" key={'ingredient '+ingredient}>{ingredient}</div>
                                     );
                                 })}
-                                <button type="button" onClick={() => this.AddProductToCart(pizza)}>Add to Cart</button>
+                                <form className="size">
+                                    {this.state.sizeOfPizza.map((size) =>{
+                                        return(
+                                            <button className="size-btn" key={"size "+size} type="button" onClick={() => this.props.ChangeSizeOfPizza(size, pizza.name)}>{size}</button>
+                                        );
+                                    })}
+                                </form>
+                                <p className="price">Price: <span className="price">{pizza.size*pizza.priceIndex}$</span></p>
+                                <button className="btn" type="button" onClick={() => this.AddProductToCart(pizza)}>Add to Cart</button>
                             </div>
                         </div>
                     );
@@ -41,13 +63,16 @@ class Pizza extends Component{
 
 const mapStateToProps = (state) =>{
     return{
-        pizza: state.products.pizza
+        pizza: state.products.pizza,
+        cart: state.cart
     };
 }
 
 const mapDispatchToProps = (dispatch) =>{
     return{
         AddProductToCart: (product) => dispatch(AddProductToCart(product)),
+        ChangeIncrementCountOfProduct: (product) => dispatch(ChangeIncrementCountOfProduct(product)),
+        ChangeSizeOfPizza: (size, name) => dispatch(ChangeSizeOfPizza(size, name))
     }
 }
 

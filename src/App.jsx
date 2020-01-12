@@ -9,6 +9,7 @@ import Pizza from "./components/Pizza/Pizza";
 import Burgers from "./components/Burgers/Burgers";
 import Drinks from "./components/Drinks/Drinks";
 import Cart from "./components/Cart/Cart";
+import "./styles/_general.scss"
  
 class App extends Component{
     render(){
