@@ -60,7 +60,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
     return{
         AddProductToCart: (product) => dispatch(AddProductToCart(product)),
-        ChangeIncrementCountOfProduct: (product) => dispatch(IncrementCountOfProduct(product))
+        IncrementCountOfProduct: (product) => dispatch(IncrementCountOfProduct(product))
     }
 }
 

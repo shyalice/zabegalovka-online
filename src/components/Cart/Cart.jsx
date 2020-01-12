@@ -20,10 +20,11 @@ class Cart extends Component{
             }
             else return total+=product.price * product.count
         });
-        return total;
+        return total.toFixed(2);
     }
 
     render(){
+        if(this.props.cart.length > 0){
         return(
             <div className="container">
                 {this.props.cart.map((product) =>{
@@ -35,7 +36,7 @@ class Cart extends Component{
                             <ChangeCount product={product}/>
                             <Ingredients ingredients={product.ingredients} />
                             <p>size: {product.size}</p>
-                            <p className="price">Price: <span className="price">{product.size*product.priceIndex*product.count}$</span></p>
+                            <p className="price">Price: <span className="price">{(product.size*product.priceIndex*product.count).toFixed(2)}$</span></p>
                             <button className="btn" type="button" onClick={() => this.props.DeleteProductFromCart(product)}>Delete from Cart</button>
                         </div>
                         );
@@ -45,7 +46,7 @@ class Cart extends Component{
                                 <h3 className="product-item-name">{product.name}</h3>
                                 <ChangeCount product={product}/>
                                 <Ingredients ingredients={product.ingredients} />
-                                <p className="price">Price: <span className="price">{product.price*product.count}$</span></p>
+                                <p className="price">Price: <span className="price">{(product.price*product.count).toFixed(2)}$</span></p>
                                 <button className="btn" type="button" onClick={() => this.props.DeleteProductFromCart(product)}>Delete from Cart</button>
                             </div>
                         );
@@ -56,7 +57,7 @@ class Cart extends Component{
                                 <h3 className="product-item-name">{product.name}</h3>
                                 <ChangeCount product={product}/>
                                 <p>size: {product.size}</p>
-                                <p className="price">Price: <span className="price">{product.size*product.priceIndex*product.count}$</span></p>
+                                <p className="price">Price: <span className="price">{(product.size*product.priceIndex*product.count).toFixed(2)}$</span></p>
                                 <button className="btn" type="button" onClick={() => this.props.DeleteProductFromCart(product)}>Delete from Cart</button>
                             </div>
                         );
@@ -68,6 +69,14 @@ class Cart extends Component{
                 <div>{this.totalPrice(this.props.cart)}$</div>
             </div>
         );
+        }
+        else{
+            return(
+                <div className="container">
+                    <p>Cart is empty...</p>
+                </div>
+            );
+        }
     }
 }
 

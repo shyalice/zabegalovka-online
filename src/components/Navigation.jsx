@@ -27,7 +27,7 @@ class Navigation extends Component{
             }
             else return total+=product.price * product.count
         });
-        return total;
+        return total.toFixed(2);
     }
 
     render(){
