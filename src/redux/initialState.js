@@ -3,7 +3,7 @@ export const initialState = {
         pizza:[
             {type: "pizza",
             name:"Chicken Dominator",
-            ingredient: ["Pepper", "Barbecue Chicken", "Peri-Peri Chicken", "Chicken Tikka", "Grilled Chicken Rashers"],
+            ingredients: ["Pepper", "Barbecue Chicken", "Peri-Peri Chicken", "Chicken Tikka", "Grilled Chicken Rashers"],
             isVeg: false,
             size: 25,
             priceIndex: 0.45,
@@ -11,7 +11,7 @@ export const initialState = {
 
             {type: "pizza",
             name:"Pepper Barbecue & Onion",
-            ingredient: ["Pepper", "Barbecue", "Chicken", "Onion"],
+            ingredients: ["Pepper", "Barbecue", "Chicken", "Onion"],
             isVeg: false,
             size: 25,
             priceIndex: 0.4,
@@ -19,7 +19,7 @@ export const initialState = {
 
             {type: "pizza",
             name:"Chicken Fiesta",
-            ingredient: ["Grilled Chicken Rashers", "Peri-Peri Chicken", "Onion", "Capsicum"],
+            ingredients: ["Grilled Chicken Rashers", "Peri-Peri Chicken", "Onion", "Capsicum"],
             isVeg: false,
             size: 25,
             priceIndex: 0.4,
@@ -27,7 +27,7 @@ export const initialState = {
 
             {type: "pizza",
             name:"Indi Chicken Tikka",
-            ingredient: ["Chicken Tikka", "Onion", "Red Paprika", "Mint Mayo"],
+            ingredients: ["Chicken Tikka", "Onion", "Red Paprika", "Mint Mayo"],
             isVeg: false,
             size: 25,
             priceIndex: 0.4,
@@ -35,7 +35,7 @@ export const initialState = {
 
             {type: "pizza",
             name:"Chicken Sausage", 
-            ingredient: ["Chicken Sausage", "Cheese"],
+            ingredients: ["Chicken Sausage", "Cheese"],
             isVeg: false,
             size: 25,
             priceIndex: 0.25,
@@ -90,14 +90,14 @@ export const initialState = {
         burgers:[
             {type: "burger",
             name:"Chicken Burger", 
-            ingredient: ["Chicken", "Cheese", "Tomato"],
+            ingredients: ["Chicken", "Cheese", "Tomato"],
             isVeg: false,
             price: 6.20,
             count:1},
 
             {type: "burger",
             name:"Fish Burger", 
-            ingredient: ["Fish", "Cheese", "Onion", "Mushrooms"],
+            ingredients: ["Fish", "Cheese", "Onion", "Mushrooms"],
             isVeg: true,
             price: 8.20,
             count:1},

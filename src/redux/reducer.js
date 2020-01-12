@@ -1,12 +1,11 @@
 import {initialState} from "./initialState";
 import {ADD_PRODUCT_TO_CART, 
         DELETE_PRODUCT_FROM_CART,
-        CHANGE_INCREMENT_COUNT_OF_PRODUCT,
-        CHANGE_DECREMENT_COUNT_OF_PRODUCT,
+        INCREMENT_COUNT_OF_PRODUCT,
+        DECREMENT_COUNT_OF_PRODUCT,
         CHANGE_SIZE_OF_PIZZA, 
         CHANGE_SIZE_OF_LEMONADE, 
-        CHANGE_SIZE_OF_COFFEE,
-        CHANGE_SIZE_FROM_CART} from "./actionTypes";
+        CHANGE_SIZE_OF_COFFEE} from "./actionTypes";
 
 const reducer = (state = initialState, action) =>{
     switch(action.type){
@@ -24,7 +23,7 @@ const reducer = (state = initialState, action) =>{
             }
         }
 
-        case CHANGE_INCREMENT_COUNT_OF_PRODUCT: {
+        case INCREMENT_COUNT_OF_PRODUCT: {
             return{
                 ...state,
                 cart: state.cart.map((product) => {
@@ -39,7 +38,7 @@ const reducer = (state = initialState, action) =>{
             }
         }
 
-        case CHANGE_DECREMENT_COUNT_OF_PRODUCT: {
+        case DECREMENT_COUNT_OF_PRODUCT: {
             return{
                 ...state,
                 cart: state.cart.map((product) => {
@@ -105,19 +104,6 @@ const reducer = (state = initialState, action) =>{
                 ...state,
                 products: {...state.products, drinks}
             }
-        }
-
-        case CHANGE_SIZE_FROM_CART: return{
-            ...state,
-            cart: state.cart.map((product)=>{
-                if(product.id === action.id){
-                    return{
-                        ...product,
-                        size: action.size
-                    }
-                }
-                else return product
-            })
         }
 
         default: return state

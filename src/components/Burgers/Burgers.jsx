@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {AddProductToCart, ChangeIncrementCountOfProduct} from "../../redux/actions";
+import {AddProductToCart, IncrementCountOfProduct} from "../../redux/actions";
 import { connect } from "react-redux";
 
 class Burgers extends Component{
@@ -17,7 +17,7 @@ class Burgers extends Component{
             }
         };
         if(count > 0){
-            this.props.ChangeIncrementCountOfProduct(product);
+            this.props.IncrementCountOfProduct(product);
         }
         else{
             this.props.AddProductToCart(product);
@@ -34,7 +34,7 @@ class Burgers extends Component{
                             <h3 className="product-item-name">{burger.name}</h3>
                             <div>
                                 <h4 className="ingredients">ingredients:</h4>
-                                {burger.ingredient.map((ingredient) =>{
+                                {burger.ingredients.map((ingredient) =>{
                                     return(
                                         <div className="ingredient-item" key={'ingredient_' + ingredient}>{ingredient}</div>
                                     );
@@ -60,7 +60,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
     return{
         AddProductToCart: (product) => dispatch(AddProductToCart(product)),
-        ChangeIncrementCountOfProduct: (product) => dispatch(ChangeIncrementCountOfProduct(product))
+        ChangeIncrementCountOfProduct: (product) => dispatch(IncrementCountOfProduct(product))
     }
 }
 

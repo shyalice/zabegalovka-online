@@ -1,11 +1,10 @@
 import {ADD_PRODUCT_TO_CART, 
         DELETE_PRODUCT_FROM_CART,
-        CHANGE_INCREMENT_COUNT_OF_PRODUCT,
-        CHANGE_DECREMENT_COUNT_OF_PRODUCT,
+        INCREMENT_COUNT_OF_PRODUCT,
+        DECREMENT_COUNT_OF_PRODUCT,
         CHANGE_SIZE_OF_PIZZA,
         CHANGE_SIZE_OF_LEMONADE, 
-        CHANGE_SIZE_OF_COFFEE,
-        CHANGE_SIZE_FROM_CART} from "./actionTypes";
+        CHANGE_SIZE_OF_COFFEE} from "./actionTypes";
 
 export const AddProductToCart = (product) =>{
     return{
@@ -21,16 +20,16 @@ export const DeleteProductFromCart = (product) =>{
     }
 }
 
-export const ChangeIncrementCountOfProduct = (product)=>{
+export const IncrementCountOfProduct = (product)=>{
     return{
-        type: CHANGE_INCREMENT_COUNT_OF_PRODUCT,
+        type: INCREMENT_COUNT_OF_PRODUCT,
         product
     }
 }
 
-export const ChangeDecrementCountOfProduct = (product)=>{
+export const DecrementCountOfProduct = (product)=>{
     return{
-        type: CHANGE_DECREMENT_COUNT_OF_PRODUCT,
+        type: DECREMENT_COUNT_OF_PRODUCT,
         product
     }
 }
@@ -56,13 +55,5 @@ export const ChangeSizeOfCoffee = (size, name) =>{
         type: CHANGE_SIZE_OF_COFFEE,
         size,
         name
-    }
-}
-
-export const ChangeSizeFromCart = (size, id) =>{
-    return{
-        type: CHANGE_SIZE_FROM_CART,
-        size,
-        id
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {connect} from "react-redux";
 import {AddProductToCart,
-        ChangeIncrementCountOfProduct,
+        IncrementCountOfProduct,
         ChangeSizeOfPizza} from "../../redux/actions";
 
 class Pizza extends Component{
@@ -21,7 +21,7 @@ class Pizza extends Component{
             }
         };
         if(count > 0){
-            this.props.ChangeIncrementCountOfProduct(product);
+            this.props.IncrementCountOfProduct(product);
         }
         else{
             this.props.AddProductToCart(product);
@@ -38,7 +38,7 @@ class Pizza extends Component{
                             <h3 className="product-item-name">{pizza.name}</h3>
                             <div>
                                 <h4 className="ingredients">ingredients:</h4>
-                                {pizza.ingredient.map((ingredient) =>{
+                                {pizza.ingredients.map((ingredient) =>{
                                     return(
                                         <div className="ingredient-item" key={'ingredient '+ingredient}>{ingredient}</div>
                                     );
@@ -71,7 +71,7 @@ const mapStateToProps = (state) =>{
 const mapDispatchToProps = (dispatch) =>{
     return{
         AddProductToCart: (product) => dispatch(AddProductToCart(product)),
-        ChangeIncrementCountOfProduct: (product) => dispatch(ChangeIncrementCountOfProduct(product)),
+        IncrementCountOfProduct: (product) => dispatch(IncrementCountOfProduct(product)),
         ChangeSizeOfPizza: (size, name) => dispatch(ChangeSizeOfPizza(size, name))
     }
 }
